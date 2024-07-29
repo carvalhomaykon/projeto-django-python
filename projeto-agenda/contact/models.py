@@ -19,3 +19,6 @@ class Contact(models.Model): # Criação da tabela
     created_date = models.DateTimeField(default=timezone.now)
     # default=timezone.now --> Faz com que o usuário não inseri a data e sim o django automaticamente inserir a data atual
     description = models.TextField(blank=True) # Por ser Text, não é obrigatório colocar o limitador de caracteres
+
+    def __str__(self) -> str:
+        return f'{self.first_name} {self.last_name}'
