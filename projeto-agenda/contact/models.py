@@ -14,7 +14,7 @@ class Contact(models.Model): # Criação da tabela
     first_name = models.CharField(max_length=50) # Max lenght (Máximo de letras)
     last_name = models.CharField(max_length=50)
     phone = models.CharField (max_length=50)
-    email = models.EmailField(max_length=254)
+    email = models.EmailField(max_length=254, blank=True)
     # blank = true --> Deixa opcional, se não é obrigatório inserir aquele elemento
     created_date = models.DateTimeField(default=timezone.now)
     # default=timezone.now --> Faz com que o usuário não inseri a data e sim o django automaticamente inserir a data atual
