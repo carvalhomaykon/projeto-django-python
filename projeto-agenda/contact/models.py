@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 # id (primary key - automático)
 # Create your models here.
@@ -37,6 +38,11 @@ class Contact(models.Model): # Criação da tabela / model
     # on_delete --> Devido está linkando outro model, tenho que informar que quandor apagar a category, o que fazer com o contato?
         # models.CASCADE --> Todos os contatos da categoria serão excluidos
         # models.SET_NULL --> quandoo excluido o campo category vai ser nulo
+    owner = models.ForeignKey(
+        User, 
+        on_delete=models.SET_NULL, 
+        blank=True, null=True
+    )
 
     def __str__(self) -> str:
         return f'{self.first_name} {self.last_name}'
