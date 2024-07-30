@@ -25,3 +25,7 @@ class ContactAdmin (admin.ModelAdmin):
     # Não pode adicionar valores que estão na lista 'list_editable'
     list_display_links =  'id', 'phone',
                 
+@admin.register (models.Category)
+class CategoryAdmin (admin.ModelAdmin):
+    list_display = 'name',
+    ordering = '-id',
