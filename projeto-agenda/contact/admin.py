@@ -7,7 +7,7 @@ class ContactAdmin (admin.ModelAdmin):
     # Configurar admin
     # Colocar quais campos quero ver na admin
     # Traduzindo pra tabela, quai valores quero mostrar por coluna
-    list_display = 'id', 'first_name', 'last_name', 'phone',
+    list_display = 'id', 'first_name', 'last_name', 'phone', 'show',
     # Ordenar as colunas de acordo com um valor
     ordering =  '-id', # Ordenar em ordem decrescente
                 #'id' -->  Ordenar de acordo com id em ordem crescente
@@ -20,7 +20,7 @@ class ContactAdmin (admin.ModelAdmin):
     # Lista um número de máximo, caso o usuário click em "mostrar tudo"
     list_max_show_all = 200 # No máx 200
     # Informar quais campo quer que sejam editados
-    list_editable = 'first_name', 'last_name',
+    list_editable = 'first_name', 'last_name', 'show',
     # Criar link de acesso para o cliente
     # Não pode adicionar valores que estão na lista 'list_editable'
     list_display_links =  'id', 'phone',
