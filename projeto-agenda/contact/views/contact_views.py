@@ -65,11 +65,12 @@ def search(request):
             )\
         .order_by('-id')[:10]
     
-    print(contacts.query)
+    #print(contacts.query)
 
     context = {
         'contacts': contacts,
-        'site_title': 'Contatos - ',
+        'site_title': 'Search - ',
+        'search_value': search_value,
     }
 
     return render(
