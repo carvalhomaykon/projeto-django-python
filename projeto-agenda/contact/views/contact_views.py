@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.db.models import Q
 from contact.models import Contact
 from django.http import Http404
 
@@ -43,5 +44,36 @@ def contact(request, contact_id):
     return render(
         request,
         'contact/contact.html',
+        context
+    )
+
+def search(request):
+    # contacts = Contact.objects.all() --> Serve para mostrar tudo, mas não queremos mostrar tudo
+    search_value = request.GET.get('q', '').strip()
+    # strip --> Remove os espaços do começo e do fim
+    if search_value == '':
+        return redirect('contact:index')
+
+    contacts = Contact.objects\
+        .filter(show=True)\
+        .filter(
+                # | == or
+                Q(first_name__icontains=search_value) | 
+                Q(last_name__icontains=search_value) |
+                Q(phone__icontains=search_value) |
+                Q(email__icontains=search_value)
+            )\
+        .order_by('-id')[:10]
+    
+    print(contacts.query)
+
+    context = {
+        'contacts': contacts,
+        'site_title': 'Contatos - ',
+    }
+
+    return render(
+        request,
+        'contact/index.html',
         context
     )

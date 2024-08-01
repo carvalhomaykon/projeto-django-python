@@ -25,7 +25,7 @@
 
     <div class="search">
         <!-- Action é pra onde que vou postar esse formulário -->
-        <form action="" method="get">
+        <form action="{% url 'contact:search' %}" method="GET">
             <input type="text" class="search-input" placeholder="search" id="search" name="q">
         </form>
     </div>
