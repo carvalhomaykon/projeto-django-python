@@ -14,6 +14,9 @@
     >
     <!-- enctype="multipart/form-data" serve pra quando trabalhar com arquivo -->
 
+      {% csrf_token %}
+      <!-- csrf serve para proteção de dados. Ler um pouco sobre -->
+
       <div class="form-content">
         <div class="form-group">
           <label for="id_first_name">LABEL</label>
