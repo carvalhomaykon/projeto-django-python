@@ -1,5 +1,33 @@
-{% extends "global/base.html" %}
+{% extends 'global/base.html' %}
 
 {% block content %}
-    <h1> CREATE CONTATO </h1>
-{% endblock  %}
+  <div class="form-wrapper">
+
+    <h2>Contact</h2>
+
+    <!-- formularios do tipo POST são usados para melhor privacidade, para quando for anexado imagens e outros -->
+
+    <form 
+      action=""
+      method="POST"
+      enctype="multipart/form-data"
+    >
+    <!-- enctype="multipart/form-data" serve pra quando trabalhar com arquivo -->
+
+      <div class="form-content">
+        <div class="form-group">
+          <label for="id_first_name">LABEL</label>
+          <input type="text" name="first_name" maxlength="255" id="id_first_name">
+        </div>
+      </div>
+
+      <div class="form-content">
+        <div class="form-group">
+          <button class="btn" type="submit">Send</button> <!-- Enviar o formulário -->
+          <!-- <button class="btn" type="reset">Send</button>  Limpa o formulário -->
+        </div>
+      </div>
+
+    </form>
+  </div>
+{% endblock content %}
