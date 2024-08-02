@@ -9,7 +9,7 @@ urlpatterns = [
 
     # Contact (CRUD)
     path('contact/<int:contact_id>/detail/', views.contact, name='contact'), # Ler o contato
-    #path('contact/create/', views.contact, name='contact'), # Criar contato
+    path('contact/create/', views.create, name='create'), # Criar contato
     #path('contact/<int:contact_id>/update/', views.contact, name='contact'), # Atualizar o contato
     #path('contact/<int:contact_id>/delete/', views.contact, name='contact'), # Deletar o contato
 ]
