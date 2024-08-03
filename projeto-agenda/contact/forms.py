@@ -87,8 +87,8 @@ class ContactForm(forms.ModelForm):
             self.add_error (
                 'first_name',
                 ValidationError(
-                'Não digite ABC nesse campo',
-                code='invalid'
+                    'Não digite ABC nesse campo',
+                    code='invalid'
                 )
             )
 

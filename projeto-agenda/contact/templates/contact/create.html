@@ -5,10 +5,11 @@
 
     <h2>Contact</h2>
 
-    <!-- formularios do tipo POST são usados para melhor privacidade, para quando for anexado imagens e outros -->
+    <!-- formularios do tipo POST são usados para melhor privacidade, para quando for anexado imagens e outros 
+     action="{% url "contact:create" %}" -->
 
-    <form 
-      action="{% url "contact:create" %}"
+    <form  
+      action="{{ form_action }}"
       method="POST"
       enctype="multipart/form-data"
     >
