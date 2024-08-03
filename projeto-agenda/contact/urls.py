@@ -12,4 +12,7 @@ urlpatterns = [
     path('contact/create/', views.create, name='create'), # Criar contato
     path('contact/<int:contact_id>/update/', views.update, name='update'), # Atualizar o contato
     path('contact/<int:contact_id>/delete/', views.delete, name='delete'), # Deletar o contato
+
+    # Urls do user_forms | user
+    path('user/create/', views.register, name='register'),
 ]

@@ -1,10 +1,12 @@
 from django.core.exceptions import ValidationError
 from django import forms
 from . import models
+from django.contrib.auth.forms import UserCreationForm
 
 # Criar formulário no django:
 # Criar a classe
 class ContactForm(forms.ModelForm):
+    
    #first_name = forms.CharField(
     #    widget=forms.TextInput(
     #        attrs={
@@ -103,3 +105,6 @@ class ContactForm(forms.ModelForm):
             )
 
         return first_name
+    
+class RegisterForm(UserCreationForm):
+    ...
