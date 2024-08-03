@@ -44,20 +44,51 @@ class ContactForm(forms.ModelForm):
         # 'first_name': forms.PasswordInput() --> Usado para colocar *
 
     def clean(self):
-        # cleaned_data = self.cleaned_data
-        #print (cleaned_data)
-        self.add_error(
-            'first_name',
-            ValidationError(
-                'Mensagem de Erro',
-                code='invalid'
-            )
-        )
-        self.add_error(
-            'first_name',
-            ValidationError(
-                'Mensagem de Erro 2',
-                code='invalid'
-            )
-        )
+        cleaned_data = self.cleaned_data
+        first_name = self.cleaned_data.get('first_name')
+        last_name = self.cleaned_data.get('last_name')
+
+        if first_name == last_name:
+            msg = ValidationError(
+                    'Primeiro nome não pode ser igual ao segundo',
+                    code='invalid'
+                )
+            self.add_error ('first_name', msg)
+            self.add_error ('last_name', msg)
+
         return super().clean()
+
+
+        #print (cleaned_data)
+        # Para validação de usa o clean
+        #self.add_error(
+        #    'first_name',
+        #    ValidationError(
+        #        'Mensagem de Erro',
+        #        code='invalid'
+        #    )
+        #)
+        #self.add_error(
+        #    'first_name',
+        #    ValidationError(
+        #        'Mensagem de Erro 2',
+        #        code='invalid'
+        #    )
+        #)
+        # add_error -> Pega todos os erros dos campos
+        # raise -> Pega o primeiro error e para a execução do código.
+        return super().clean()
+    
+    def clean_first_name(self):
+        first_name = self.cleaned_data.get('first_name')
+        
+        if first_name == 'ABC':
+            self.add_error (
+                'first_name',
+                ValidationError(
+                'Não digite ABC nesse campo',
+                code='invalid'
+                )
+            )
+
+        return first_name
