@@ -5,20 +5,20 @@ from . import models
 # Criar formulário no django:
 # Criar a classe
 class ContactForm(forms.ModelForm):
-    first_name = forms.CharField(
-        widget=forms.TextInput(
-            attrs={
-                'class': 'classe-a classe-b',
-                'placeholder' : 'Escreva aqui',
-            }
-        ),
-        #label='Primeiro Nome'
-        # help_text='Texto de ajuda para seu usuário'
-        help_text='Texto de ajuda para seu usuário'
-    )
+   #first_name = forms.CharField(
+    #    widget=forms.TextInput(
+    #        attrs={
+    #            'class': 'classe-a classe-b',
+    #            'placeholder' : 'Escreva aqui',
+    #        }
+    #    ),
+    #    #label='Primeiro Nome'
+    #    # help_text='Texto de ajuda para seu usuário'
+    #    help_text='Texto de ajuda para seu usuário'
+    #)
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    #def __init__(self, *args, **kwargs):
+    #    super().__init__(*args, **kwargs)
 
         #self.fields['first_name'].widget.attrs.update({
         #    'class': 'classe-a classe-b',
@@ -28,11 +28,21 @@ class ContactForm(forms.ModelForm):
     # forms.Form -> Criar um formulário do zero
     # forms.ModelForm -> Form baseado num modelo
     # Indicar Models
+
+    picture = forms.ImageField(
+        widget=forms.FileInput(
+            attrs={
+                'acept': 'image/*'
+            }
+        )
+    )
+
     class Meta:
         model = models.Contact
         fields = (
             'first_name', 'last_name', 'phone',
             'email', 'description', 'category',
+            'picture',
         )
         #widgets = {
         #    'first_name': forms.TextInput(
