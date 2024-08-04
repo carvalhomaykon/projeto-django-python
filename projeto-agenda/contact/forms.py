@@ -38,7 +38,8 @@ class ContactForm(forms.ModelForm):
             attrs={
                 'acept': 'image/*'
             }
-        )
+        ),
+        required=False
     )
 
     class Meta:
